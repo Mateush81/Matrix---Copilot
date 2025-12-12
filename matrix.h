@@ -25,6 +25,11 @@ public:
     matrix& wstaw(int x, int y, int wartosc); // wstawienie wartoœci
     int pokaz(int x, int y);                 // pokazanie wartoœci w komórce
 
+    // METODY MODYFIKACJI I DOSTÊPU
+    matrix& dowroc(void);                 // transpozycja macierzy
+    matrix& losuj(void);                  // wype³nienie ca³ej macierzy losowymi cyframi 0-9
+    matrix& losuj(int x);                 // losowe wstawienie x cyfr w losowe miejsca
+
     // pomocnicza funkcja dostêpu
     inline int& at(int x, int y) { return data[x * n + y]; }
     inline int rozmiar() { return n; }
