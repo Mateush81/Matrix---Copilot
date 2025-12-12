@@ -9,7 +9,7 @@ private:
     std::unique_ptr<int[]> data;            // wskaŸnik na dynamiczn¹ tablicê n*n
 
 public:
-    // KONSTRUKTORY I DESTRUKTOR
+    // KONSTRUKTORY I DESTRUKTOR [4.1]
     matrix();                               // konstruktor domyœlny
     matrix(int n);                          // konstruktor z alokacj¹
     matrix(int n, int* t);                  // konstruktor z kopiowaniem danych
@@ -21,7 +21,7 @@ public:
     matrix& wstaw(int x, int y, int wartosc); // wstawienie wartoœci
     int pokaz(int x, int y) const;          // pokazanie wartoœci w komórce
 
-    // METODY MODYFIKACJI I DOSTÊPU
+    // METODY MODYFIKACJI I DOSTÊPU [4.2]
     matrix& dowroc(void);                   // transpozycja macierzy
     matrix& losuj(void);                    // wype³nienie ca³ej macierzy losowymi cyframi 0-9
     matrix& losuj(int x);                   // losowe wstawienie x cyfr w losowe miejsca
@@ -31,7 +31,7 @@ public:
     inline int at(int x, int y) const { return data[x * n + y]; }
     inline int rozmiar() const { return n; }
 
-    // Metody diagonalne 
+    // Metody diagonalne  [4.3]
     matrix& diagonalna(int* t);             // wype³nienie g³ównej przek¹tnej danymi z tablicy
     matrix& diagonalna_k(int k, int* t);     // przesuniêta przek¹tna 
 
@@ -46,5 +46,37 @@ public:
 
     // Operator wypisywania
     friend std::ostream& operator<<(std::ostream& o, const matrix& m);
+
+
+    // WZORY SPECJALNE [4.4]
+	matrix& szachownica(void);            // wzór szachownicy
+
+
+	// OPERATORY ARYTMETYCZNE [4.5]
+	matrix& operator+(matrix& m);    // dodawanie macierzy
+	matrix& operator*(matrix& m);    // mno¿enie macierzy
+
+	matrix& operator+(int a); // dodawanie
+	matrix& operator*(int a); // mno¿enie
+	matrix& operator-(int a); // odejmowanie
+
+	friend matrix& operator+(int a, matrix& m); // dodawanie
+	friend matrix& operator*(int a, matrix& m); // mno¿enie
+	friend matrix& operator-(int a, matrix& m); // odejmowanie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
 

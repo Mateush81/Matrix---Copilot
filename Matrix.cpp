@@ -164,3 +164,23 @@ std::ostream& operator<<(std::ostream& o, const matrix& m) {
     }
     return o;
 }
+
+
+
+matrix& matrix::szachownica() {
+    if (!data) return *this;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            data[i * n + j] = (i + j) % 2;
+    return *this;
+}
+
+
+matrix& matrix::operator+(matrix& m) {
+    if (n != m.n || !data || !m.data) return *this;
+    auto wynik = std::make_unique<int[]>(n * n);
+    for (int i = 0; i < n * n; i++)
+        wynik[i] = data[i] + m.data[i];
+    data = std::move(wynik);
+    return *this;
+}
