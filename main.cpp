@@ -21,7 +21,6 @@ int main() {
         4,5,6,
         7,8,9
     };
-
     matrix C(3, tablica);
     cout << "Utworzono macierz C i przepisano dane z tablicy\n\n";
 
@@ -35,6 +34,12 @@ int main() {
     cout << "Alokujê macierz A na wymiar 5x5...\n";
     A.alokuj(5);
     cout << "Gotowe.\n\n";
+
+
+    cout << "=== TEST 6: wstaw i pokaz ===\n";
+    A.wstaw(0, 0, 10).wstaw(4, 4, 20);
+    cout << "A(0,0) = " << A.pokaz(0, 0) << "\n";
+    cout << "A(4,4) = " << A.pokaz(4, 4) << "\n\n";
 
     cout << "=== KONIEC TESTÓW ===\n";
     return 0;

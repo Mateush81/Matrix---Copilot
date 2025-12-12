@@ -1,5 +1,5 @@
 ﻿#include "matrix.h"
-#include <cstring> // memcpy
+#include <cstring>
 
 
 //  Konstruktor domyślny
@@ -12,7 +12,7 @@ matrix::matrix() : n(0), data(nullptr) {}
 
 matrix::matrix(int n) : n(n) {
     data = std::make_unique<int[]>(n * n);
-    std::memset(data.get(), 0, n * n * sizeof(int)); // wypełnij zerami
+    std::memset(data.get(), 0, n * n * sizeof(int));
 }
 
 
@@ -43,31 +43,47 @@ matrix::matrix(matrix& m) : n(m.n) {
 //  Destruktor
 
 matrix::~matrix() {
-    // unique_ptr zwalnia pamięć automatycznie
+    // unique_ptr automatycznie zwalnia pamięć
 }
 
 
 
-//  Funkcja alokacji pamięci
+//  Metoda alokuj
 
 matrix& matrix::alokuj(int new_n) {
-    // Jeśli nie ma pamięci → alokuj
     if (!data) {
         n = new_n;
         data = std::make_unique<int[]>(n * n);
         return *this;
     }
 
-    // Jeśli pamięci jest za mało → alokuj od nowa
     if (new_n > n) {
         n = new_n;
         data = std::make_unique<int[]>(n * n);
         return *this;
     }
 
-    // Jeśli pamięci jest więcej → nic nie rób
-    // (czyli zostaw dotychczasową alokację)
-
-    n = new_n;
+    n = new_n; // jeśli pamięci jest więcej, zostawiamy istniejącą
     return *this;
+}
+
+
+
+//  Wstawianie wartości
+
+matrix& matrix::wstaw(int x, int y, int wartosc) {
+    if (x >= 0 && x < n && y >= 0 && y < n) {
+        data[x * n + y] = wartosc;
+    }
+    return *this;
+}
+
+
+//  Pokazanie wartości
+
+int matrix::pokaz(int x, int y) {
+    if (x >= 0 && x < n && y >= 0 && y < n) {
+        return data[x * n + y];
+    }
+    return 0;
 }
