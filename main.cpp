@@ -5,17 +5,17 @@ using namespace std;
 
 int main() {
 
-    cout << "=== TEST 1: Konstruktor domyœlny ===\n";
+    cout << " Konstruktor domyœlny \n";
     matrix A;
     cout << "Utworzono macierz A (bez alokacji)\n\n";
 
 
-    cout << "=== TEST 2: matrix(int n) ===\n";
+    cout << " matrix(int n)\n";
     matrix B(3);   // 3x3
     cout << "Utworzono macierz B o wymiarach 3x3\n\n";
 
 
-    cout << "=== TEST 3: matrix(int n, int* t) ===\n";
+    cout << "matrix(int n, int* t) \n";
     int tablica[9] = {
         1,2,3,
         4,5,6,
@@ -25,22 +25,22 @@ int main() {
     cout << "Utworzono macierz C i przepisano dane z tablicy\n\n";
 
 
-    cout << "=== TEST 4: Konstruktor kopiuj¹cy ===\n";
+    cout << " Konstruktor kopiuj¹cy\n";
     matrix D(C);
     cout << "Utworzono macierz D jako kopiê macierzy C\n\n";
 
 
-    cout << "=== TEST 5: alokuj(int n) ===\n";
+    cout << " alokuj(int n)\n";
     cout << "Alokujê macierz A na wymiar 5x5...\n";
     A.alokuj(5);
     cout << "Gotowe.\n\n";
 
 
-    cout << "=== TEST 6: wstaw i pokaz ===\n";
+    cout << "wstaw i pokaz \n";
     A.wstaw(0, 0, 10).wstaw(4, 4, 20);
     cout << "A(0,0) = " << A.pokaz(0, 0) << "\n";
     cout << "A(4,4) = " << A.pokaz(4, 4) << "\n\n";
 
-    cout << "=== KONIEC TESTÓW ===\n";
+    cout << " KONIEC \n";
     return 0;
 }
