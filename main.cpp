@@ -1,55 +1,66 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 #include "matrix.h"
 
 using namespace std;
 
 int main() {
-    cout << "Tworzenie macierzy A (domyœlny konstruktor)...\n";
+    srand(static_cast<unsigned int>(time(nullptr)));
+
+    cout << "=== Konstruktory i destruktor ===\n";
+
     matrix A;
-    cout << "Macierz A utworzona (bez alokacji).\n\n";
-
-    cout << "Tworzenie macierzy B o wymiarach 3x3...\n";
     matrix B(3);
-    cout << "Macierz B utworzona.\n\n";
-
-    cout << "Tworzenie macierzy C z danymi z tablicy...\n";
-    int tablica[9] = { 1,2,3,4,5,6,7,8,9 };
-    matrix C(3, tablica);
-    cout << "Macierz C utworzona i wype³niona.\n\n";
-
-    cout << "Kopiowanie macierzy C do macierzy D...\n";
+    int tab[9] = { 1,2,3,4,5,6,7,8,9 };
+    matrix C(3, tab);
     matrix D(C);
-    cout << "Macierz D utworzona jako kopia macierzy C.\n\n";
 
-    cout << "Alokacja macierzy A na wymiar 5x5...\n";
     A.alokuj(5);
     A.wstaw(0, 0, 10).wstaw(4, 4, 20);
-    cout << "Macierz A wype³niona wybranymi wartoœciami.\n";
-    cout << "A(0,0) = " << A.pokaz(0, 0) << ", A(4,4) = " << A.pokaz(4, 4) << "\n\n";
+    cout << "Macierz A:\n" << A << "\n";
 
-    cout << "Wczytywanie macierzy E o wymiarach 30x30 z pliku matrix30.txt...\n";
+    cout << "=== Podstawowe metody modyfikacji i odczytu ===\n";
     matrix E(30);
-    std::ifstream plik("matrix30.txt");
-    if (!plik.is_open()) {
-        cerr << "Nie mo¿na otworzyæ pliku matrix30.txt!\n";
-        return 1;
+    ifstream plik("matrix30.txt");
+    if (plik.is_open()) {
+        for (int i = 0; i < 30; i++)
+            for (int j = 0; j < 30; j++) {
+                int x;
+                if (!(plik >> x)) x = 0;
+                E.wstaw(i, j, x);
+            }
+        plik.close();
     }
-    for (int i = 0; i < 30; i++)
-        for (int j = 0; j < 30; j++) {
-            int x;
-            plik >> x;
-            E.wstaw(i, j, x);
-        }
-    plik.close();
-    cout << "Macierz E wczytana.\n\n";
+    else {
+        E.losuj();
+    }
 
-    cout << "Losowanie 10 elementów w macierzy E i transpozycja...\n";
     E.losuj(10);
     E.dowroc();
-    cout << "Po losowaniu i transpozycji: E(0,0) = " << E.pokaz(0, 0)
-        << ", E(29,29) = " << E.pokaz(29, 29) << "\n\n";
 
-    cout << "Program zakoñczy³ dzia³anie.\n";
+    cout << "=== Metody diagonalne, wiersze i kolumny ===\n";
+    matrix F(5);
+    int t_diag[5] = { 1,2,3,4,5 };
+    int t_diag2[5] = { 5,4,3,2,1 };
+    int col[5] = { 9,8,7,6,5 };
+    int row[5] = { 1,3,5,7,9 };
+
+    F.diagonalna(t_diag);
+    cout << F << "\n";
+    F.diagonalna_k(1, t_diag2);
+    cout << F << "\n";
+    F.kolumna(2, col);
+    cout << F << "\n";
+    F.wiersz(1, row);
+    cout << F << "\n";
+    F.przekatna();
+    cout << F << "\n";
+    F.pod_przekatna();
+    cout << F << "\n";
+    F.nad_przekatna();
+    cout << F << "\n";
+
     return 0;
 }
