@@ -1,7 +1,7 @@
-﻿#include "matrix.h"
-#include <cstring>
-#include <algorithm>
-#include <cstdlib>
+﻿#include "matrix.h" // Deklaracja klasy matrix oraz operatorów
+#include <cstring> // // memcpy, memset – kopiowanie i zerowanie pamięci
+#include <algorithm> // std::fill – proste wypełnianie tablic
+#include <cstdlib> // rand – losowanie liczb do macierzy
 
 // ===== 4.1 Konstrukcja =====
 matrix::matrix() : n(0), data(nullptr) {}
@@ -146,3 +146,15 @@ std::ostream& operator<<(std::ostream& o, const matrix& m) {
     }
     return o;
 }
+
+
+
+
+
+
+
+
+
+
+
+

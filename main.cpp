@@ -1,8 +1,8 @@
 #include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
-#include "matrix.h"
+#include <fstream> // ifstream – wczytywanie danych z pliku
+#include <cstdlib> // rand, srand – losowanie liczb
+#include <ctime> // time() - generowanie liczb losowych
+#include "matrix.h" // klasa matrix
 
 using namespace std;
 

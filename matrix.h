@@ -1,6 +1,6 @@
 #pragma once
 
-#include <memory>
+#include <memory>   // unique_ptr – dynamiczna alokacja pamiêci dla macierzy
 #include <iostream>
 
 class matrix {
