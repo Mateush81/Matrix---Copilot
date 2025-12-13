@@ -49,16 +49,16 @@ public:
 
 
     // WZORY SPECJALNE [4.4]
-	matrix& szachownica(void);            // wzór szachownicy
+    matrix& szachownica(void);            // wzór szachownicy
 
 
-	// OPERATORY ARYTMETYCZNE [4.5]
-	matrix& operator+(matrix& m);    // dodawanie macierzy
-	matrix& operator*(matrix& m);    // mno¿enie macierzy
+    // OPERATORY ARYTMETYCZNE [4.5]
+    matrix& operator+(matrix& m);    // dodawanie macierzy
+    matrix& operator*(matrix& m);    // mno¿enie macierzy
 
-	matrix& operator+(int a); // dodawanie
-	matrix& operator*(int a); // mno¿enie
-	matrix& operator-(int a); // odejmowanie
+    matrix& operator+(int a); // dodawanie
+    matrix& operator*(int a); // mno¿enie
+    matrix& operator-(int a); // odejmowanie
 
     friend matrix operator+(int a, const matrix& m);
     friend matrix operator*(int a, const matrix& m);
@@ -67,17 +67,16 @@ public:
 
 
 
-
-    
-
+    // OPERATORY INKREMENTACJI/DEKREMENTACJI I MODYFIKACJI [4.6]
 
 
+    matrix& operator++(int);      // wszystkie elementy powiêkszone o 1
+    matrix& operator--(int);      // wszystkie elementy pomniejszone o 1
 
+    matrix& operator+=(int a);    // ka¿dy element zwiêkszony o a
+    matrix& operator-=(int a);    // ka¿dy element zmniejszony o a
+    matrix& operator*=(int a);    // ka¿dy element mno¿ony przez a
 
-
-
-
-
-
+    matrix& operator()(double);   // zwiêkszenie wszystkich elementów o czêœæ ca³kowit¹
 };
 
