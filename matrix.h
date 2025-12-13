@@ -60,14 +60,15 @@ public:
 	matrix& operator*(int a); // mno¿enie
 	matrix& operator-(int a); // odejmowanie
 
-	friend matrix& operator+(int a, matrix& m); // dodawanie
-	friend matrix& operator*(int a, matrix& m); // mno¿enie
-	friend matrix& operator-(int a, matrix& m); // odejmowanie
+    friend matrix operator+(int a, const matrix& m);
+    friend matrix operator*(int a, const matrix& m);
+    friend matrix operator-(int a, const matrix& m);
 
 
 
 
 
+    
 
 
 
