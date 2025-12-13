@@ -47,10 +47,8 @@ public:
     // Operator wypisywania
     friend std::ostream& operator<<(std::ostream& o, const matrix& m);
 
-
     // WZORY SPECJALNE [4.4]
     matrix& szachownica(void);            // wzór szachownicy
-
 
     // OPERATORY ARYTMETYCZNE [4.5]
     matrix& operator+(matrix& m);    // dodawanie macierzy
@@ -64,12 +62,7 @@ public:
     friend matrix operator*(int a, const matrix& m);
     friend matrix operator-(int a, const matrix& m);
 
-
-
-
     // OPERATORY INKREMENTACJI/DEKREMENTACJI I MODYFIKACJI [4.6]
-
-
     matrix& operator++(int);      // wszystkie elementy powiêkszone o 1
     matrix& operator--(int);      // wszystkie elementy pomniejszone o 1
 
@@ -78,5 +71,9 @@ public:
     matrix& operator*=(int a);    // ka¿dy element mno¿ony przez a
 
     matrix& operator()(double);   // zwiêkszenie wszystkich elementów o czêœæ ca³kowit¹
-};
 
+    // OPERATORY STRUMIENIOWE I PORÓWNAÑ [4.7]
+    bool operator==(const matrix& m) const;   // sprawdzenie równoœci macierzy
+    bool operator>(const matrix& m) const;    // sprawdzenie wiêkszoœci elementów
+    bool operator<(const matrix& m) const;    // sprawdzenie mniejszoœci elementów
+};
